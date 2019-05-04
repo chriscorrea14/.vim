@@ -3,16 +3,30 @@ set mouse=a
 set cursorline
 set cursorcolumn
 
+" opening and searching for files
+set path+=**
+set wildmenu
+
 " tabbing
 set expandtab
 set autoindent
 set tabstop=4
+set shiftwidth=4
+nnoremap ; :
 
 " searching visually selected code
 :vnoremap // y/<C-R>"<CR>
 set incsearch
 set hlsearch
 nnoremap <CR> :nohlsearch<CR><CR>
+
+set showcmd
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set laststatus=2
+set noshowmode
 
 :inoremap <Home> <Esc>I
 :inoremap DD <C-O>dd
@@ -25,7 +39,11 @@ nnoremap <CR> :nohlsearch<CR><CR>
 
 " Saving session
 :nmap <C-W> :mksession! ~/vimsess.vim<CR> :xa
-:imap <C-W> <Esc>:mksession! ~/vimsess.vim<CR> :xa
+" :imap <C-W> <Esc>:mksession! ~/vimsess.vim<CR> :xa
+
+" Deleting words
+:imap <C-BS> <C-W>
+:imap <C-Del> <C-O>dw
 
 " colors
 set t_Co=256
@@ -79,5 +97,5 @@ function! ToggleComment()
     end
 endfunction
 
-" :inoremap <C-m> <Esc> :call ToggleComment()<CR>i
-:vnoremap <C-Space> :call ToggleComment()<CR>
+:inoremap <C-_> <Esc> :call ToggleComment()<CR>i
+:vnoremap <C-_> :call ToggleComment()<CR>
