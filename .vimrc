@@ -45,6 +45,9 @@ set noshowmode
 :imap <C-BS> <C-W>
 :imap <C-Del> <C-O>dw
 
+:inoremap <C-l> <C-O>V
+:vnoremap <C-l> V
+
 " colors
 set t_Co=256
 syntax enable
